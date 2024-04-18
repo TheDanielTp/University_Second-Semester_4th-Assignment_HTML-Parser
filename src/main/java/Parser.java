@@ -2,47 +2,74 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class Parser {
-    static List<Country> countries = new ArrayList<>();
+public class Parser
+{
+    static ArrayList <Country> countries = new ArrayList <> ();
 
-    public List<Country> sortByName(){
-        List<Country> sortedByName = new ArrayList<>(countries);
-        // Sort countries alphabetically (least)
+    public ArrayList <Country> sortByName ()
+    {
+        ArrayList <Country> sortedByName = new ArrayList <> (countries);
         //TODO
-        return  sortedByName;
+        return sortedByName;
     }
 
-    public List<Country> sortByPopulation(){
-        List<Country> sortedByPopulation = new ArrayList<>(countries);
-        // Sort countries by population (most)
+    public ArrayList <Country> sortByPopulation ()
+    {
+        ArrayList <Country> sortedByPopulation = new ArrayList <> (countries);
         //TODO
         return sortedByPopulation;
     }
 
-    public List<Country> sortByArea(){
-        List<Country> sortedByArea = new ArrayList<>(countries);
-        // Sort countries by area (most)
+    public ArrayList <Country> sortByArea ()
+    {
+        ArrayList <Country> sortedByArea = new ArrayList <> (countries);
         //TODO
         return sortedByArea;
     }
 
-    public void setUp() throws IOException {
-
-        //Parse the HTML file using Jsoup
-        //TODO
-
-        // Extract data from the HTML
-        //TODO
-
-        // Iterate through each country div to extract country data
-        //TODO
+    public static Country findCountryViaName (String name)
+    {
+        for (Country country : countries)
+        {
+            if (country.getName ().equals (name))
+            {
+                return country;
+            }
+        }
+        return null;
     }
 
-    public static void main(String[] args) {
-        //you can test your code here before you run the unit tests ;)
+    public static void setUp () throws IOException
+    {
+        
+    }
+
+    public static void main (String[] args) throws IOException
+    {
+        setUp ();
+        Scanner scanner = new Scanner (System.in);
+
+        while (true)
+        {
+            System.out.println ("Enter country's name: ");
+            String name = scanner.nextLine ();
+            if (name.equals ("esc"))
+            {
+                break;
+            }
+            while (findCountryViaName (name) == null)
+            {
+                System.out.println ("Country not found. Enter country's name: ");
+                name = scanner.nextLine ();
+            }
+            Country country = findCountryViaName (name);
+            assert country != null;
+            System.out.println (country.toString ());
+        }
     }
 }
