@@ -8,7 +8,21 @@ public class Country {
 
     public Country(String name, String capital, int population, double area) {
         //TODO
+    }
 
+    @Override
+    public String toString() {
+        //TODO
+        return "";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Country country = (Country) o;
+        return population == country.population &&
+                Double.compare(country.area, area) == 0 &&
+                Objects.equals(name, country.name) &&
+                Objects.equals(capital, country.capital);
     }
 
     public String getName() {
@@ -25,20 +39,5 @@ public class Country {
 
     public double getArea() {
         return area;
-    }
-
-    @Override
-    public String toString() {
-        //TODO
-        return "";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        Country country = (Country) o;
-        return population == country.population &&
-                Double.compare(country.area, area) == 0 &&
-                Objects.equals(name, country.name) &&
-                Objects.equals(capital, country.capital);
     }
 }
