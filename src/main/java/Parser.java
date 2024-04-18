@@ -46,7 +46,77 @@ public class Parser
 
     public static void setUp () throws IOException
     {
-        
+        String filePath = "D:\\Java\\4th Assignment\\University_Second-Semester_4th-Assignment_HTML-Parser\\src\\Resources\\country-list.html";
+
+        try
+        {
+            Document document  = Jsoup.parse (new File (filePath), "UTF-8");
+            String   string    = document.toString ();
+            String   plainText = Jsoup.parse (string).wholeText ();
+
+            Scanner scanner = new Scanner (plainText);
+
+            String newInfo = "";
+            while (scanner.hasNext ())
+            {
+                while (scanner.hasNextLine ())
+                {
+                    String line = scanner.nextLine ().trim ();
+                    if (! line.isEmpty ())
+                    {
+                        newInfo += line + "\n";
+                        break;
+                    }
+                }
+            }
+
+            scanner = new Scanner (newInfo);
+
+            scanner.nextLine ();
+            scanner.nextLine ();
+            while (scanner.hasNextLine ())
+            {
+                String name = scanner.nextLine ();
+                if (scanner.hasNext ())
+                {
+                    scanner.next ();
+                }
+
+                String capital = "";
+                if (scanner.hasNext ())
+                {
+                    capital = scanner.nextLine ();
+                }
+                if (scanner.hasNext ())
+                {
+                    scanner.next ();
+                }
+
+                String population = "";
+                if (scanner.hasNext ())
+                {
+                    population = scanner.nextLine ();
+                }
+                if (scanner.hasNext ())
+                {
+                    scanner.next ();
+                }
+
+                String area = "";
+                if (scanner.hasNext ())
+                {
+                    area = scanner.nextLine ();
+                }
+
+                countries.add (new Country (name, capital, population, area));
+            }
+
+            scanner.close ();
+        }
+        catch (IOException e)
+        {
+            throw new IOException ("File not found");
+        }
     }
 
     public static void main (String[] args) throws IOException
