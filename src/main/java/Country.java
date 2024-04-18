@@ -4,15 +4,18 @@ public class Country
 {
     private final String name;
     private final String capital;
-    private final String    population;
-    private final String area;
+    private final int    population;
+    private final double area;
 
     public Country (String name, String capital, String population, String area)
     {
-        this.name       = name;
-        this.capital    = capital;
-        this.population = population;
-        this.area       = area;
+        this.name = name;
+        capital = capital.substring (1);
+        this.capital = capital;
+        population = population.trim ();
+        this.population = Integer.parseInt (population);
+        area = area.replaceAll ("[^\\d.]", "");
+        this.area = Double.parseDouble (area);
     }
 
     @Override
@@ -21,9 +24,9 @@ public class Country
         String string = "";
 
         string += "Name: " + name + "\n";
-        string += "Capital:" + capital + "\n";
-        string += "Population:" + population + "\n";
-        string += "Area" + area + "\n";
+        string += "Capital: " + capital + "\n";
+        string += "Population: " + population + "\n";
+        string += "Area: " + area + "\n";
 
         return string;
     }
@@ -31,7 +34,7 @@ public class Country
     @Override
     public boolean equals (Object object)
     {
-        if (getClass() != object.getClass())
+        if (getClass () != object.getClass ())
         {
             return false;
         }
@@ -55,12 +58,12 @@ public class Country
         return capital;
     }
 
-    public String getPopulation ()
+    public int getPopulation ()
     {
         return population;
     }
 
-    public String getArea ()
+    public double getArea ()
     {
         return area;
     }
