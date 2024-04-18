@@ -7,15 +7,12 @@ public class Country
     private final int    population;
     private final double area;
 
-    public Country (String name, String capital, String population, String area)
+    public Country (String name, String capital, int population, double area)
     {
         this.name = name;
-        capital = capital.substring (1);
         this.capital = capital;
-        population = population.trim ();
-        this.population = Integer.parseInt (population);
-        area = area.replaceAll ("[^\\d.]", "");
-        this.area = Double.parseDouble (area);
+        this.population = population;
+        this.area = area;
     }
 
     @Override
@@ -40,7 +37,7 @@ public class Country
         }
 
         Country country = (Country) object;
-        return Objects.equals (population, country.population) && Objects.equals (country.area, area)
+        return Objects.equals (population, country.population) && Double.compare (country.area, area) == 0
                 && Objects.equals (name, country.name) && Objects.equals (capital, country.capital);
     }
 
