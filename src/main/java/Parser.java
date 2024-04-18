@@ -143,7 +143,16 @@ public class Parser
 
                 if (! capital.isEmpty ())
                 {
-                    countries.add (new Country (name, capital, population, area));
+                    capital = capital.substring (1);
+
+                    population = population.trim ();
+                    int populationInt = Integer.parseInt (population);
+
+
+                    area = area.replaceAll ("[^\\d.]", "");
+                    double areaDouble = Double.parseDouble (area);
+
+                    countries.add (new Country (name, capital, populationInt, areaDouble));
                 }
             }
 
@@ -227,7 +236,10 @@ public class Parser
                 case "2" ->
                 {
                     System.out.println ("Countries sorted according to Name:");
-                    System.out.println (sortByName ());
+                    for (Country country : sortByName ())
+                    {
+                        System.out.println (country.toString ());
+                    }
                     System.out.println ("Press enter to continue");
                     scanner.nextLine ();
                     clearTerminal ();
@@ -235,7 +247,10 @@ public class Parser
                 case "3" ->
                 {
                     System.out.println ("Countries sorted according to Population:");
-                    System.out.println (sortByPopulation ());
+                    for (Country country : sortByPopulation ())
+                    {
+                        System.out.println (country.toString ());
+                    }
                     System.out.println ("Press enter to continue");
                     scanner.nextLine ();
                     clearTerminal ();
@@ -243,7 +258,10 @@ public class Parser
                 case "4" ->
                 {
                     System.out.println ("Countries sorted according to Area:");
-                    System.out.println (sortByArea ());
+                    for (Country country : sortByArea ())
+                    {
+                        System.out.println (country.toString ());
+                    }
                     System.out.println ("Press enter to continue");
                     scanner.nextLine ();
                     clearTerminal ();
