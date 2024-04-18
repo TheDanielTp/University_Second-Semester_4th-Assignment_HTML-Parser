@@ -4,10 +4,10 @@ public class Country
 {
     private final String name;
     private final String capital;
-    private final int    population;
-    private final double area;
+    private final String    population;
+    private final String area;
 
-    public Country (String name, String capital, int population, double area)
+    public Country (String name, String capital, String population, String area)
     {
         this.name       = name;
         this.capital    = capital;
@@ -21,9 +21,9 @@ public class Country
         String string = "";
 
         string += "Name: " + name + "\n";
-        string += "Capital: " + capital + "\n";
-        string += "Population: " + population + "\n";
-        string += "Area: " + area + "\n";
+        string += "Capital:" + capital + "\n";
+        string += "Population:" + population + "\n";
+        string += "Area" + area + "\n";
 
         return string;
     }
@@ -37,9 +37,13 @@ public class Country
         }
 
         Country country = (Country) object;
-        return population == country.population && Double.compare (country.area, area) == 0
+        return Objects.equals (population, country.population) && Objects.equals (country.area, area)
                 && Objects.equals (name, country.name) && Objects.equals (capital, country.capital);
     }
+
+    /*
+    GET-INFO FUNCTIONS
+    */
 
     public String getName ()
     {
@@ -51,12 +55,12 @@ public class Country
         return capital;
     }
 
-    public int getPopulation ()
+    public String getPopulation ()
     {
         return population;
     }
 
-    public double getArea ()
+    public String getArea ()
     {
         return area;
     }
