@@ -53,6 +53,24 @@ public class Parser
 
     public static Country findCountryViaName (String name)
     {
+        if (name.equalsIgnoreCase ("Persia"))
+        {
+            return findCountryViaName ("Iran");
+        }
+        if (name.equalsIgnoreCase ("Côte d'Ivoire"))
+        {
+            return findCountryViaName ("Ivory Coast");
+        }
+        if (name.equalsIgnoreCase ("Republic of Korea"))
+        {
+            return findCountryViaName ("South Korea");
+        }
+        if (name.equalsIgnoreCase ("Czechia"))
+        {
+            return findCountryViaName ("Czech Republic");
+        }
+
+
         if (name.equalsIgnoreCase ("US") || name.equalsIgnoreCase ("U.S.") || name.equalsIgnoreCase ("America"))
         {
             return findCountryViaName ("United States");
@@ -61,10 +79,15 @@ public class Parser
         {
             return findCountryViaName ("United Kingdom");
         }
+        if (name.equalsIgnoreCase ("Democratic People's Republic of Korea") || name.equalsIgnoreCase ("DPRK") || name.equalsIgnoreCase ("D.P.R.K."))
+        {
+            return findCountryViaName ("North Korea");
+        }
         if (name.equalsIgnoreCase ("UAE") || name.equalsIgnoreCase ("U.A.E."))
         {
             return findCountryViaName ("United Arab Emirates");
         }
+
         for (Country country : countries)
         {
             if (country.getName ().equalsIgnoreCase (name))
@@ -327,7 +350,7 @@ public class Parser
 
                     System.out.println (country.toString ());
 
-                    System.out.print ("Press enter to continue");
+                    System.out.print ("Press enter to continue ");
                     scanner.nextLine ();
                     clearTerminal ();
                 }
@@ -338,7 +361,7 @@ public class Parser
                     {
                         System.out.println (country.toString ());
                     }
-                    System.out.print ("Press enter to continue");
+                    System.out.print ("Press enter to continue ");
                     scanner.nextLine ();
                     clearTerminal ();
                 }
@@ -349,7 +372,7 @@ public class Parser
                     {
                         System.out.println (country.toString ());
                     }
-                    System.out.print ("Press enter to continue");
+                    System.out.print ("Press enter to continue ");
                     scanner.nextLine ();
                     clearTerminal ();
                 }
@@ -360,20 +383,20 @@ public class Parser
                     {
                         System.out.println (country.toString ());
                     }
-                    System.out.print ("Press enter to continue");
+                    System.out.print ("Press enter to continue ");
                     scanner.nextLine ();
                     clearTerminal ();
                 }
                 case "5" ->
                 {
                     clearTerminal ();
-                    System.out.println ("Exiting the Program...");
+                    System.out.println ("Exiting the Program... ");
                     return;
                 }
                 default ->
                 {
                     System.out.print ("Invalid choice. Please try again.");
-                    sleep (2000);
+                    sleep (1000);
                     clearTerminal ();
                 }
             }
