@@ -1,7 +1,5 @@
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +8,8 @@ import java.util.*;
 public class Parser
 {
     static ArrayList <Country> countries = new ArrayList <> ();
+
+    //region Basic Functions
 
     public static void clearTerminal ()
     {
@@ -27,6 +27,10 @@ public class Parser
             throw new RuntimeException (e);
         }
     }
+
+    //endregion
+
+    //region Sort Functions
 
     public static ArrayList <Country> sortByName ()
     {
@@ -50,6 +54,10 @@ public class Parser
         Collections.reverse (sortedByArea);
         return sortedByArea;
     }
+
+    //endregion
+
+    //region Search Functions
 
     public static Country findCountryViaName (String name)
     {
@@ -176,6 +184,10 @@ public class Parser
         }
         return null;
     }
+
+    //endregion
+
+    //region Main Functions
 
     public static void setUp () throws IOException
     {
@@ -402,4 +414,6 @@ public class Parser
             }
         }
     }
+
+    //endregion
 }
