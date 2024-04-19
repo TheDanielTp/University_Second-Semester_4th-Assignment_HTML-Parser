@@ -53,6 +53,18 @@ public class Parser
 
     public static Country findCountryViaName (String name)
     {
+        if (name.equalsIgnoreCase ("US") || name.equalsIgnoreCase ("U.S.") || name.equalsIgnoreCase ("America"))
+        {
+            return findCountryViaName ("United States");
+        }
+        if (name.equalsIgnoreCase ("UK") || name.equalsIgnoreCase ("U.K.") || name.equalsIgnoreCase ("Britain") || name.equalsIgnoreCase ("England"))
+        {
+            return findCountryViaName ("United Kingdom");
+        }
+        if (name.equalsIgnoreCase ("UAE") || name.equalsIgnoreCase ("U.A.E."))
+        {
+            return findCountryViaName ("United Arab Emirates");
+        }
         for (Country country : countries)
         {
             if (country.getName ().equalsIgnoreCase (name))
@@ -66,6 +78,59 @@ public class Parser
     public static ArrayList <Country> findSimilarCountries (String name)
     {
         ArrayList <Country> similarCountries = new ArrayList <> ();
+
+        if (name.equalsIgnoreCase ("Nuclear"))
+        {
+            similarCountries.add (findCountryViaName ("Russia"));
+            similarCountries.add (findCountryViaName ("United States"));
+            similarCountries.add (findCountryViaName ("China"));
+            similarCountries.add (findCountryViaName ("France"));
+            similarCountries.add (findCountryViaName ("United Kingdom"));
+            similarCountries.add (findCountryViaName ("Pakistan"));
+            similarCountries.add (findCountryViaName ("India"));
+            similarCountries.add (findCountryViaName ("Israel"));
+            similarCountries.add (findCountryViaName ("Iran"));
+
+            return similarCountries;
+        }
+        if (name.equalsIgnoreCase ("Islam") || name.equalsIgnoreCase ("Muslim"))
+        {
+            similarCountries.add (findCountryViaName ("Algeria"));
+            similarCountries.add (findCountryViaName ("Iran"));
+            similarCountries.add (findCountryViaName ("Turkey"));
+            similarCountries.add (findCountryViaName ("Pakistan"));
+            similarCountries.add (findCountryViaName ("Egypt"));
+            similarCountries.add (findCountryViaName ("Indonesia"));
+            similarCountries.add (findCountryViaName ("Morocco"));
+            similarCountries.add (findCountryViaName ("Bangladesh"));
+            similarCountries.add (findCountryViaName ("India"));
+            similarCountries.add (findCountryViaName ("Saudi Arabia"));
+            similarCountries.add (findCountryViaName ("Iraq"));
+            similarCountries.add (findCountryViaName ("Sudan"));
+            similarCountries.add (findCountryViaName ("Jordan"));
+            similarCountries.add (findCountryViaName ("Niger"));
+            similarCountries.add (findCountryViaName ("Uzbekistan"));
+            similarCountries.add (findCountryViaName ("Yemen"));
+            similarCountries.add (findCountryViaName ("Afghanistan"));
+            similarCountries.add (findCountryViaName ("Libya"));
+            similarCountries.add (findCountryViaName ("Malaysia"));
+            similarCountries.add (findCountryViaName ("United Arab Emirates"));
+            similarCountries.add (findCountryViaName ("Somalia"));
+            similarCountries.add (findCountryViaName ("Tunisia"));
+            similarCountries.add (findCountryViaName ("Azerbaijan"));
+            similarCountries.add (findCountryViaName ("Djibouti"));
+
+            return similarCountries;
+        }
+        if (name.equalsIgnoreCase ("Sigma") || name.equalsIgnoreCase ("Anti Gay") || name.equalsIgnoreCase ("Chad"))
+        {
+            similarCountries.add (findCountryViaName ("Indonesia"));
+            similarCountries.add (findCountryViaName ("Saudi Arabia"));
+            similarCountries.add (findCountryViaName ("Iran"));
+            similarCountries.add (findCountryViaName ("Russia"));
+
+            return similarCountries;
+        }
 
         for (Country country : countries)
         {
