@@ -15,6 +15,8 @@ public class Country
         this.area = area;
     }
 
+    //region Override Functions
+
     @Override
     public String toString ()
     {
@@ -41,9 +43,9 @@ public class Country
                 && Objects.equals (name, country.name) && Objects.equals (capital, country.capital);
     }
 
-    /*
-    GET-INFO FUNCTIONS
-    */
+    //endregion
+
+    //region Get-Info Functions
 
     public String getName ()
     {
@@ -64,4 +66,6 @@ public class Country
     {
         return area;
     }
+
+    //endregion
 }
