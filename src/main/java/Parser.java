@@ -37,17 +37,17 @@ public class Parser
 
     public static ArrayList <Country> sortByPopulation ()
     {
-        ArrayList<Country> sortedByPopulation = new ArrayList<>(countries);
-        sortedByPopulation.sort(Comparator.comparing(Country::getPopulation));
-        Collections.reverse(sortedByPopulation);
+        ArrayList <Country> sortedByPopulation = new ArrayList <> (countries);
+        sortedByPopulation.sort (Comparator.comparing (Country :: getPopulation));
+        Collections.reverse (sortedByPopulation);
         return sortedByPopulation;
     }
 
     public static ArrayList <Country> sortByArea ()
     {
-        ArrayList<Country> sortedByArea = new ArrayList<>(countries);
-        sortedByArea.sort(Comparator.comparing(Country::getPopulation));
-        Collections.reverse(sortedByArea);
+        ArrayList <Country> sortedByArea = new ArrayList <> (countries);
+        sortedByArea.sort (Comparator.comparing (Country :: getArea));
+        Collections.reverse (sortedByArea);
         return sortedByArea;
     }
 
@@ -75,6 +75,18 @@ public class Parser
             }
         }
         return similarCountries;
+    }
+
+    public static Country findCountryViaCapital (String name)
+    {
+        for (Country country : countries)
+        {
+            if (country.getCapital ().equalsIgnoreCase (name))
+            {
+                return country;
+            }
+        }
+        return null;
     }
 
     public static void setUp () throws IOException
@@ -194,16 +206,32 @@ public class Parser
                         continue;
                     }
 
+                    Country country = null;
                     while (findCountryViaName (name) == null)
                     {
                         if (findSimilarCountries (name).isEmpty ())
                         {
-                            System.out.print ("Country not found. Enter country's name: ");
+                            if (findCountryViaCapital (name) == null)
+                            {
+                                System.out.print ("Country not found. Enter country's name: ");
+
+                                name = scanner.nextLine ();
+                                if (name.equals ("esc"))
+                                {
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                country = findCountryViaCapital (name);
+                                assert country != null;
+                                name = country.getName ();
+                            }
                         }
                         else
                         {
                             System.out.println ();
-                            ArrayList<Country> similarCountries = findSimilarCountries (name);
+                            ArrayList <Country> similarCountries = findSimilarCountries (name);
 
                             System.out.println ("Did you mean:");
                             for (Country similarCountry : similarCountries)
@@ -211,16 +239,21 @@ public class Parser
                                 System.out.println (similarCountry.getName ());
                             }
                             System.out.print ("Enter country's name: ");
-                        }
-                        name = scanner.nextLine ();
-                        if (name.equals ("esc"))
-                        {
-                            break;
+
+                            name = scanner.nextLine ();
+                            if (name.equals ("esc"))
+                            {
+                                break;
+                            }
                         }
                     }
 
                     System.out.println ();
-                    Country country = findCountryViaName (name);
+
+                    if (country == null)
+                    {
+                        country = findCountryViaName (name);
+                    }
 
                     if (country == null)
                     {
@@ -240,7 +273,7 @@ public class Parser
                     {
                         System.out.println (country.toString ());
                     }
-                    System.out.println ("Press enter to continue");
+                    System.out.print ("Press enter to continue");
                     scanner.nextLine ();
                     clearTerminal ();
                 }
@@ -251,7 +284,7 @@ public class Parser
                     {
                         System.out.println (country.toString ());
                     }
-                    System.out.println ("Press enter to continue");
+                    System.out.print ("Press enter to continue");
                     scanner.nextLine ();
                     clearTerminal ();
                 }
@@ -262,7 +295,7 @@ public class Parser
                     {
                         System.out.println (country.toString ());
                     }
-                    System.out.println ("Press enter to continue");
+                    System.out.print ("Press enter to continue");
                     scanner.nextLine ();
                     clearTerminal ();
                 }
