@@ -260,7 +260,6 @@ public class Parser
                     population = population.trim ();
                     int populationInt = Integer.parseInt (population);
 
-
                     area = area.replaceAll ("[^\\d.]", "");
                     double areaDouble = Double.parseDouble (area);
 

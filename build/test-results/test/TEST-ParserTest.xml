@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ParserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-04-18T15:37:21" hostname="DESKTOP-8J86FSR" time="0.03">
+<testsuite name="ParserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-04-23T19:43:33" hostname="DESKTOP-8J86FSR" time="0.034">
   <properties/>
-  <testcase name="testSortByName()" classname="ParserTest" time="0.03">
+  <testcase name="testSortByName()" classname="ParserTest" time="0.034">
     <failure message="org.opentest4j.AssertionFailedError: expected: &lt;Name: Democratic Republic of the Congo&#10;Capital: Kinshasa&#10;Population: 70916439&#10;Area: 2.234541E7&#10;&gt; but was: &lt;Name: Democratic Republic of the Congo&#10;Capital: Kinshasa&#10;Population: 70916439&#10;Area: 2345410.0&#10;&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;Name: Democratic Republic of the Congo
 Capital: Kinshasa
 Population: 70916439
